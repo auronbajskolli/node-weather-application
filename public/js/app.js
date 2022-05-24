@@ -5,27 +5,17 @@
 //   }); //se o json response
 // });
 
-// fetch("http://localhost:3000/weather?adress=%22prishtin%22").then(
-//   (response) => {
-//     response.json().then((data) => {
-//       if (data.error) {
-//         console.log("error");
-//       }
-//       console.log(data.location);
-//       console.log(data.forecast);
-//     });
-//   }
-// );
+
 
 const weatherForm = document.querySelector("form");
-const search = document.querySelector("input");
+const searchh = document.querySelector("input");
 const messageOne = document.querySelector("#message-1");
 const messageTwo = document.querySelector("#message-2");
 
 weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const location = search.value;
+  const location = searchh.value;
 
   messageOne.textContent = "Loading...";
   messageTwo.textContent = "";
