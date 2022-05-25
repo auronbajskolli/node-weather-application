@@ -24,6 +24,9 @@ hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath));
 
+//Port fix
+
+const port = process.env.PORT || 3000;
 // express.static o funksion i cili merr si argument
 // vendin se ku ndodhet qajo fajlll
 //app.use me ba ndryshe nserver ton diqka. e pi thojm use that fajll qe na ka qu express.static
@@ -116,6 +119,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  log("Server is running on port 3000");
+app.listen(port, () => {
+  log("Server is running on port " + port);
 });
