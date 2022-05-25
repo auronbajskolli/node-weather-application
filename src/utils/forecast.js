@@ -21,12 +21,17 @@ const forecast = (latitude, longitude, callback) => {
       callback(undefined, "Gabim ne search");
     } else {
       callback(
-        undefined, "Koha esht "+
-        body.current.weather_descriptions[0] +
+        undefined,
+        "Koha esht " +
+          body.current.weather_descriptions[0] +
           " temperatura ne ket moment esht " +
-          body.current.temperature + " Celsisus "+
+          body.current.temperature +
+          " Celsisus " +
           " ama doket si " +
-          body.current.feelslike + " Celsisus"
+          body.current.feelslike +
+          " Celsisus" +
+          " dhe Humidity esht " +
+          body.current.humidity + "%."
       );
     }
   });
