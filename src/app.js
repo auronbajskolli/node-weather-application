@@ -43,18 +43,18 @@ app.get("/about", (req, res) => {
     //dmth na i jepum partials vlerat ktu qe tani me perdor ata naper
     //faqe tona psh headerin e perdorum ntri faqe ndryshme masi i kem jep vlera qe merr
     // psh me shfaq emrin name qe e kem jep ose title
-    title: "About Me",
-    name: "Auron bajskolli",
+    title: "About",
+    name: "Auron Bajskolli",
   });
 });
 
-app.get("/help", (req, res) => {
-  res.render("help", {
-    helpText: "This is some helpful text.",
-    title: "Help",
-    name: "Auron bajskolli",
-  });
-});
+// app.get("/help", (req, res) => {
+//   res.render("help", {
+//     helpText: "This is some helpful text.",
+//     title: "Help",
+//     name: "Auron bajskolli",
+//   });
+// });
 //get dmth kur shkon nqit url qa me ba kit rast i kem than
 //kur shkon te base url print Hello si pergjigje.
 // app.com;
@@ -89,13 +89,16 @@ app.get("/weather", (req, res) => {
         return res.send({ error });
       }
 
-      forecast(longitude, latitude, (error, forecastData) => {
+      forecast(longitude, latitude, (error, {description,temperature,feels,humidity}) => {
         if (error) {
           return res.send({ error });
         }
 
         res.send({
-          forecast: forecastData,
+          description,
+          temperature,
+          feels,
+          humidity,
           location,
           address: req.query.address,
         });

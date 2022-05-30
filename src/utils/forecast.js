@@ -12,7 +12,7 @@ const request = require("request");
 const log = console.log;
 
 const forecast = (latitude, longitude, callback) => {
-  const url = `http://api.weatherstack.com/current?access_key=dc8f6d9de0b354441a1fdc3ef40ed7a5&query=${latitude}, ${longitude}}`;
+  const url = `http://api.weatherstack.com/current?access_key=4b74af27d80abb209df825c3bcd1ff88&query=${latitude}, ${longitude}}`;
   const json = true;
   request({ url, json }, (error, { body }) => {
     if (error) {
@@ -20,19 +20,13 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback(undefined, "Gabim ne search");
     } else {
-      callback(
-        undefined,
-        "Koha esht " +
-          body.current.weather_descriptions[0] +
-          " temperatura ne ket moment esht " +
-          body.current.temperature +
-          " Celsisus " +
-          " ama doket si " +
-          body.current.feelslike +
-          " Celsisus" +
-          " dhe Humidity esht " +
-          body.current.humidity + "%."
-      );
+      callback(undefined, {
+        description: body.current.weather_descriptions[0],
+
+        temperature: body.current.temperature,
+        feels: body.current.feelslike,
+        humidity: body.current.humidity,
+      });
     }
   });
 };
